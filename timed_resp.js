@@ -156,10 +156,10 @@ function experimentInit() {
   map_text = new visual.TextStim({
     win: psychoJS.window,
     name: 'map_text',
-    text: 'Instructions for learning map\n\nPress any key to begin',
+    text: 'Instructions for learning map\n\nEach symbol corresponds to keys H, U, I, or L\nLearn which key corresponds to which 2 symbols\n\nPress H to begin...',
     font: 'Arial',
     units: undefined, 
-    pos: [0, 0], height: 0.1,  wrapWidth: undefined, ori: 0,
+    pos: [0, 0], height: 0.04,  wrapWidth: undefined, ori: 0,
     color: new util.Color('white'),  opacity: 1,
     depth: 0.0 
   });
@@ -169,10 +169,10 @@ function experimentInit() {
   rt_text = new visual.TextStim({
     win: psychoJS.window,
     name: 'rt_text',
-    text: 'Instructions for learning timing\n\nPress any key to continue',
+    text: 'Instructions for learning timing\n\nWhen the outer ring meets the circle, press the correct key that corresponds to the symbol\n\nPress H key to begin...',
     font: 'Arial',
     units: undefined, 
-    pos: [0, 0], height: 0.1,  wrapWidth: undefined, ori: 0,
+    pos: [0, 0], height: 0.04,  wrapWidth: undefined, ori: 0,
     color: new util.Color('white'),  opacity: 1,
     depth: 0.0 
   });
@@ -182,10 +182,10 @@ function experimentInit() {
   rtmap_text = new visual.TextStim({
     win: psychoJS.window,
     name: 'rtmap_text',
-    text: 'Instructions for forced reaction task\n\nPress any key to begin',
+    text: 'Instructions for forced reaction task\n\nWhen the outer ring meets the circle, press the correct key that corresponds to the symbol\n\nPress H key to begin...',
     font: 'Arial',
     units: undefined, 
-    pos: [0, 0], height: 0.1,  wrapWidth: undefined, ori: 0,
+    pos: [0, 0], height: 0.04,  wrapWidth: undefined, ori: 0,
     color: new util.Color('white'),  opacity: 1,
     depth: 0.0 
   });
@@ -270,7 +270,7 @@ function instr_map(trials) {
     }
 
     if (instr_STARTED) {
-      let theseKeys = map_press.getKeys({keyList: [], waitRelease: false});
+      let theseKeys = map_press.getKeys({keyList: ['h'], waitRelease: false});
       _map_press_allKeys = _map_press_allKeys.concat(theseKeys);
       if (_map_press_allKeys.length > 0) {
         continueRoutine = false;
@@ -312,7 +312,7 @@ function instr_rt(trials) {
     }
 
     if (instr_STARTED) {
-      let theseKeys = rt_press.getKeys({keyList: [], waitRelease: false});
+      let theseKeys = rt_press.getKeys({keyList: ['h'], waitRelease: false});
       _rt_press_allKeys = _rt_press_allKeys.concat(theseKeys);
       if (_rt_press_allKeys.length > 0) {
         continueRoutine = false;
@@ -354,7 +354,7 @@ function instr_rtmap(trials) {
     }
 
     if (instr_STARTED) {
-      let theseKeys = rtmap_press.getKeys({keyList: [], waitRelease: false});
+      let theseKeys = rtmap_press.getKeys({keyList: ['h'], waitRelease: false});
       _rtmap_press_allKeys = _rtmap_press_allKeys.concat(theseKeys);
       if (_rtmap_press_allKeys.length > 0) {
         continueRoutine = false;
