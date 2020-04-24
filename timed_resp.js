@@ -197,7 +197,7 @@ function experimentInit() {
   ring = new visual.Polygon ({
     win: psychoJS.window, name: 'ring', units : 'height', 
     ori: 0, pos: [0, 0],
-    lineWidth: 10, lineColor: new util.Color([-1,-1,-1]),
+    lineWidth: 10, lineColor: new util.Color([1,1,1]),
     fillColor: new util.Color([0, 0, 0]),
     edges: 32, radius: 0.5,
     opacity: 0.4, depth: -3, interpolate: true,
@@ -207,7 +207,7 @@ function experimentInit() {
     win: psychoJS.window, name: 'circle', units : 'height', 
     ori: 0, pos: [0, 0],
     lineWidth: 1, lineColor: new util.Color([0, 0, 0]),
-    fillColor: new util.Color([1,1,1]),
+    fillColor: new util.Color([-0.2, -0.2, -0.2]),
     edges: 32, radius: 0.1,
     opacity: 0.4, depth: -2, interpolate: true,
   });
@@ -228,7 +228,7 @@ function experimentInit() {
     win: psychoJS.window, name: 'rectangle_feed', units : 'height', 
     ori: 0, pos: [0, 0],
     lineWidth: 10, lineColor: new util.Color(-1.0),
-    fillColor: new util.Color([0, 0, 0]),
+    fillColor: new util.Color([-0.2, -0.2, -0.2]),
     edges: 32, radius: 0.1,
     opacity: 1, depth: 0, interpolate: true,
   });
@@ -330,8 +330,8 @@ function instr_rt(trials) {
     } else {
       rt_text.setAutoDraw(false);
       instr_STARTED = false;
-      ring.opacity = 0.3;
-      circle.opacity = 0.3;
+      ring.opacity = 1;
+      circle.opacity = 1;
       time_limit = 2.1;
       routineTimer.reset();
       return Scheduler.Event.NEXT;
@@ -563,6 +563,8 @@ function learn_rtmapRoutineEachFrame(trials) {
 
     if (ring.status === PsychoJS.Status.STARTED){ // only update if being drawn
       ring.setRadius(0.1 + (0.05 * routineTimer.getTime()));
+      circle.refresh();
+      imagestim.refresh();
     }
 
     // *imagestim* updates
@@ -658,7 +660,7 @@ function post_mapRoutine(trials) {
         success = [1, 0, 0];
         correct_stim = 0;
     }
-    if ((correct_stim >= 16)) {
+    if ((correct_stim >= 2)) {
         trials_map.finished = true;
         correct_stim = 0;
     }
